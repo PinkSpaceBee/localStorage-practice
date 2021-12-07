@@ -1,16 +1,16 @@
 function createGarden1() {
-    const gardenG1 = document.querySelector('#garden-1');
-    const addBtnG1 = document.querySelector('#g1-add-btn');
-    const removeBtnG1 = document.querySelector('#g1-rm-btn');
+    const garden = document.querySelector('#garden-1');
+    const addBtn = document.querySelector('#g1-add-btn');
+    const removeBtn = document.querySelector('#g1-rm-btn');
 
-    const tulip = document.createElement('p');
+    const tulip = document.createElement('div');
 
-    addBtnG1.addEventListener('click', () => {
+    addBtn.addEventListener('click', () => {
         localStorage.setItem('tulip', 'tulip');
         storePlant();
     });
 
-    removeBtnG1.addEventListener('click', () => {
+    removeBtn.addEventListener('click', () => {
         localStorage.removeItem('tulip');
         tulip.remove();
     });
@@ -18,7 +18,7 @@ function createGarden1() {
     function storePlant() {
         if (localStorage.getItem('tulip')) {
             tulip.textContent = localStorage.getItem('tulip');
-            gardenG1.appendChild(tulip);
+            garden.insertBefore(tulip, addBtn);
         }
     }
     storePlant();
@@ -26,3 +26,33 @@ function createGarden1() {
 }
 
 createGarden1();
+
+function createGarden2() {
+    const garden = document.querySelector('#garden-2');
+    const inputField = document.querySelector('#g2-input');
+    const addBtn = document.querySelector('#g2-add-btn');
+    const removeBtn = document.querySelector('#g2-rm-btn');
+    const plant = document.createElement('div');
+
+    addBtn.addEventListener('click', () => {
+        localStorage.setItem('plant', inputField.value);
+        storePlant();
+        inputField.value = ''; 
+    });
+
+    removeBtn.addEventListener('click', () => {
+        localStorage.removeItem('plant');
+        plant.remove();
+    });
+
+    function storePlant() {
+        if (localStorage.getItem('plant')) {
+            plant.textContent = localStorage.getItem('plant');
+            garden.appendChild(plant);
+        }
+    }
+
+    storePlant();
+}
+
+createGarden2();
