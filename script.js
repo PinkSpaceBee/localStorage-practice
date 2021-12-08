@@ -33,7 +33,7 @@ function createGarden2() {
     const removeBtn = document.querySelector('#g2-rm-btn');
     const plantG2 = document.createElement('div');
     /*
-    OKAY BUT I DIDN'T KNOW THAT I COULD REACH LOCAL VARIABLES FROM DIFFERENT SCOPES USING LOCALSTORAGE WHAT THE ACTUAL FUCK. Like, when I modify the plant variable in the G3 function, the plant variable from the G2 also gets modified??? But how and why? The plant variable is local to the function scope, how can it be accessed from a different scope? 
+    OKAY BUT I DIDN'T KNOW THAT I COULD REACH LOCAL VARIABLES FROM DIFFERENT SCOPES USING LOCALSTORAGE WHAT THE ACTUAL FUCK. Like, when I modify the plant variable in the G3 function, the plant variable from the G2 also gets modified??? But how and why? The plant variable is local to its function scope, how can it be accessed from a different scope? 
     */
 
     addBtn.addEventListener('click', () => {
@@ -111,6 +111,7 @@ function createGarden3() {
     storePlant();
 }
 createGarden3();
+
 
 
 /*
