@@ -108,7 +108,7 @@ function createGarden3() {
 createGarden3();
 
 function test() {
-    const arr = [{q: 'q', w: 'w'}];
+    const arr = [{q: 'q1', w: 'w1'}];
     const body = document.querySelector('body');
     const div = document.createElement('div');
 
@@ -122,8 +122,8 @@ function test() {
         //localStorage.setItem('div', strQ); works
         localStorage.setItem('div', JSON.stringify(arr[0]));
         storeObj();
-        console.log(typeof arr[0].q);
-        console.log(localStorage.getItem('div'))
+        //console.log(typeof arr[0].q);
+        //console.log(localStorage.getItem('div'))
     });
     buttonR.addEventListener('click', () => {
         removeObj();
@@ -136,8 +136,30 @@ function test() {
         if (localStorage.getItem('div')) {
             //localStorage.setItem('div', str);
             body.appendChild(div);
-            div.textContent = localStorage.getItem('div');
-            console.log(localStorage.getItem(arr[0]));
+
+            //for (const )
+            const parsed = JSON.parse(localStorage.getItem('div'));
+            const nonParsed = localStorage.getItem('div');
+            console.log(`check p0 ${JSON.parse(localStorage.getItem('div'))}`);
+            console.log(`check p1 ${typeof JSON.parse(localStorage.getItem('div'))}`);
+            console.log(`check p2 ${JSON.parse(localStorage.getItem('div'['length']))}`);
+            console.log(`check p3 ${parsed.hasOwnProperty('q')}`);
+            console.log(`check np0 ${nonParsed}`);
+
+            //div.textContent = parsed.q; // prints q1
+
+            for (const value of Object.values(parsed)) {
+                const span = document.createElement('span');
+                span.textContent = `${value }`;
+                div.appendChild(span);
+            }
+
+            //div.textContent = localStorage.getItem('div'); // {"q":"q","w":"w"}
+            //div.textContent = JSON.parse(localStorage.getItem('div')); //[object Object]
+            //div.textContent = localStorage.getItem(arr[0]); // nothing happens
+            console.log(`check 0 ${localStorage.getItem(arr[0])}`);
+            console.log(`check 1 ${localStorage.getItem('div')}`);
+            console.log(`check 2 ${typeof localStorage.getItem('div')}`);
         }
     }
 
