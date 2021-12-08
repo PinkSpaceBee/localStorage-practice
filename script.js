@@ -31,23 +31,26 @@ function createGarden2() {
     const inputField = document.querySelector('#g2-input');
     const addBtn = document.querySelector('#g2-add-btn');
     const removeBtn = document.querySelector('#g2-rm-btn');
-    const plant = document.createElement('div');
+    const plantG2 = document.createElement('div');
+    /*
+    OKAY BUT I DIDN'T KNOW THAT I COULD REACH LOCAL VARIABLES FROM DIFFERENT SCOPES USING LOCALSTORAGE WHAT THE ACTUAL FUCK. Like, when I modify the plant variable in the G3 function, the plant variable from the G2 also gets modified??? But how and why? The plant variable is local to the function scope, how can it be accessed from a different scope? 
+    */
 
     addBtn.addEventListener('click', () => {
-        localStorage.setItem('plant', inputField.value);
+        localStorage.setItem('plantG2', inputField.value);
         storePlant();
         inputField.value = ''; 
     });
 
     removeBtn.addEventListener('click', () => {
-        localStorage.removeItem('plant');
-        plant.remove();
+        localStorage.removeItem('plantG2');
+        plantG2.remove();
     });
 
     function storePlant() {
-        if (localStorage.getItem('plant')) {
-            plant.textContent = localStorage.getItem('plant');
-            garden.appendChild(plant);
+        if (localStorage.getItem('plantG2')) {
+            plantG2.textContent = localStorage.getItem('plantG2');
+            garden.appendChild(plantG2);
         }
     }
 
@@ -94,12 +97,13 @@ function createGarden3() {
         if (localStorage.getItem('plant')) {
 
             const parsedObj = JSON.parse(localStorage.getItem('plant'));
+
             garden.appendChild(plant);
 
             for (const [key, value] of Object.entries(parsedObj)) {
-                const span = document.createElement('span');
-                span.textContent = `${key}: ${value}; `;
-                plant.appendChild(span);
+                    const span = document.createElement('span');
+                    span.textContent = `${key}: ${value}; `;
+                    plant.appendChild(span);
             }
     }
 }
@@ -108,6 +112,8 @@ function createGarden3() {
 }
 createGarden3();
 
+
+/*
 function test() {
     const arr = [{q: 'q1', w: 'w1'}];
     const body = document.querySelector('body');
@@ -159,6 +165,4 @@ function test() {
 
     storeObj();
     }
-
-
-
+*/
