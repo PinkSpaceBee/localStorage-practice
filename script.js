@@ -61,49 +61,50 @@ function createGarden3() {
     const numInput = document.querySelector('#g3-num-input');
     const addBtn = document.querySelector('#g3-add-btn');
     const removeBtn = document.querySelector('#g3-rm-btn');
-    
+    const plant = document.createElement('div');
+
     function PlantObj(name, quantity) {
         this.name = name;
         this.quantity = quantity;
     }
 
-    const arr = [];
-    const plant = document.createElement('div');
-    let span;
+    let arr = [];
 
     addBtn.addEventListener('click', () => {
-        arr.push(new PlantObj(textInput.value, numInput.value));
-        localStorage.setItem('plant', JSON.stringify(arr[arr.length-1]));
-        storePlant();
+        if (arr.length > 0) {
+            arr = [];
+            arr.push(new PlantObj(textInput.value, numInput.value));
+        } else {
+            arr.push(new PlantObj(textInput.value, numInput.value));
+            localStorage.setItem('plant', JSON.stringify(arr[0]));
 
-        console.log(`check ${localStorage.getItem('plant')}`);
+            storePlant();
+        }
+        textInput.value = '';
+        numInput.value = '';
     });
 
     removeBtn.addEventListener('click', () => {
         localStorage.removeItem('plant');
-        plant.remove();
-        console.log(`check ${localStorage.getItem('plant')}`);
+        plant.textContent = '';
+        arr = [];
     });
 
     function storePlant() {
-        //const parsed = JSON.parse(localStorage.getItem(' '))
         if (localStorage.getItem('plant')) {
 
-            console.dir(arr);
-            console.log(arr[arr.length - 1]);
-
-            //for (const [key, value] of Object.entries(arr[arr.length - 1])) {
-            for (const [key, value] of Object.entries(JSON.parse(localStorage.getItem('plant')))) {
-                span = document.createElement('span');
-                plant.appendChild(span);
-                span.textContent = `${key}: ${value} `;
-            }
+            const parsedObj = JSON.parse(localStorage.getItem('plant'));
             garden.appendChild(plant);
-        }
+
+            for (const [key, value] of Object.entries(parsedObj)) {
+                const span = document.createElement('span');
+                span.textContent = `${key}: ${value}; `;
+                plant.appendChild(span);
+            }
     }
+}
 
-    //storePlant();
-
+    storePlant();
 }
 createGarden3();
 
@@ -118,35 +119,26 @@ function test() {
     buttonR.textContent = `I'M A DESTRIYER OF WORLDS`;
 
     buttonA.addEventListener('click', () => {
-        //localStorage.setItem('div', arr[0].q); works
-        //localStorage.setItem('div', strQ); works
         localStorage.setItem('div', JSON.stringify(arr[0]));
         storeObj();
-        //console.log(typeof arr[0].q);
-        //console.log(localStorage.getItem('div'))
+
     });
     buttonR.addEventListener('click', () => {
         removeObj();
     });
 
-    const strQ = arr[0].q;
-    const str = 'str';
-
     function storeObj() {
         if (localStorage.getItem('div')) {
-            //localStorage.setItem('div', str);
             body.appendChild(div);
 
-            //for (const )
             const parsed = JSON.parse(localStorage.getItem('div'));
             const nonParsed = localStorage.getItem('div');
+
             console.log(`check p0 ${JSON.parse(localStorage.getItem('div'))}`);
             console.log(`check p1 ${typeof JSON.parse(localStorage.getItem('div'))}`);
             console.log(`check p2 ${JSON.parse(localStorage.getItem('div'['length']))}`);
             console.log(`check p3 ${parsed.hasOwnProperty('q')}`);
             console.log(`check np0 ${nonParsed}`);
-
-            //div.textContent = parsed.q; // prints q1
 
             for (const value of Object.values(parsed)) {
                 const span = document.createElement('span');
@@ -154,9 +146,6 @@ function test() {
                 div.appendChild(span);
             }
 
-            //div.textContent = localStorage.getItem('div'); // {"q":"q","w":"w"}
-            //div.textContent = JSON.parse(localStorage.getItem('div')); //[object Object]
-            //div.textContent = localStorage.getItem(arr[0]); // nothing happens
             console.log(`check 0 ${localStorage.getItem(arr[0])}`);
             console.log(`check 1 ${localStorage.getItem('div')}`);
             console.log(`check 2 ${typeof localStorage.getItem('div')}`);
@@ -169,6 +158,7 @@ function test() {
     }
 
     storeObj();
-}
+    }
 
-test();
+
+
