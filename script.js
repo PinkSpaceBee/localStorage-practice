@@ -1,16 +1,16 @@
 function createGarden1() {
-    const garden = document.querySelector('#garden-1');
-    const addBtn = document.querySelector('#g1-add-btn');
-    const removeBtn = document.querySelector('#g1-rm-btn');
+    const gardenG1 = document.querySelector('#garden-1');
+    const addBtnG1 = document.querySelector('#g1-add-btn');
+    const removeBtnG1 = document.querySelector('#g1-rm-btn');
 
     const tulip = document.createElement('div');
 
-    addBtn.addEventListener('click', () => {
+    addBtnG1.addEventListener('click', () => {
         localStorage.setItem('tulip', 'tulip');
         storePlant();
     });
 
-    removeBtn.addEventListener('click', () => {
+    removeBtnG1.addEventListener('click', () => {
         localStorage.removeItem('tulip');
         tulip.remove();
     });
@@ -18,7 +18,7 @@ function createGarden1() {
     function storePlant() {
         if (localStorage.getItem('tulip')) {
             tulip.textContent = localStorage.getItem('tulip');
-            garden.insertBefore(tulip, addBtn);
+            gardenG1.insertBefore(tulip, addBtnG1);
         }
     }
     storePlant();
@@ -27,22 +27,22 @@ function createGarden1() {
 createGarden1();
 
 function createGarden2() {
-    const garden = document.querySelector('#garden-2');
+    const gardenG2 = document.querySelector('#garden-2');
     const inputField = document.querySelector('#g2-input');
-    const addBtn = document.querySelector('#g2-add-btn');
-    const removeBtn = document.querySelector('#g2-rm-btn');
+    const addBtnG2 = document.querySelector('#g2-add-btn');
+    const removeBtnG2 = document.querySelector('#g2-rm-btn');
     const plantG2 = document.createElement('div');
     /*
     OKAY BUT I DIDN'T KNOW THAT I COULD REACH LOCAL VARIABLES FROM DIFFERENT SCOPES USING LOCALSTORAGE WHAT THE ACTUAL FUCK. Like, when I modify the plant variable in the G3 function, the plant variable from the G2 also gets modified??? But how and why? The plant variable is local to its function scope, how can it be accessed from a different scope? 
     */
 
-    addBtn.addEventListener('click', () => {
+    addBtnG2.addEventListener('click', () => {
         localStorage.setItem('plantG2', inputField.value);
         storePlant();
         inputField.value = ''; 
     });
 
-    removeBtn.addEventListener('click', () => {
+    removeBtnG2.addEventListener('click', () => {
         localStorage.removeItem('plantG2');
         plantG2.remove();
     });
@@ -50,7 +50,7 @@ function createGarden2() {
     function storePlant() {
         if (localStorage.getItem('plantG2')) {
             plantG2.textContent = localStorage.getItem('plantG2');
-            garden.appendChild(plantG2);
+            gardenG2.appendChild(plantG2);
         }
     }
 
@@ -59,51 +59,51 @@ function createGarden2() {
 createGarden2();
 
 function createGarden3() {
-    const garden = document.querySelector('#garden-3');
-    const textInput = document.querySelector('#g3-text-input');
-    const numInput = document.querySelector('#g3-num-input');
-    const addBtn = document.querySelector('#g3-add-btn');
-    const removeBtn = document.querySelector('#g3-rm-btn');
-    const plant = document.createElement('div');
 
-    function PlantObj(name, quantity) {
+    const gardenG3 = document.querySelector('#garden-3');
+    const textInputG3 = document.querySelector('#g3-text-input');
+    const numInputG3 = document.querySelector('#g3-num-input');
+    const addBtnG3 = document.querySelector('#g3-add-btn');
+    const removeBtnG3 = document.querySelector('#g3-rm-btn');
+    const plantG3 = document.createElement('div');
+
+    function PlantG3(name, quantity) {
         this.name = name;
         this.quantity = quantity;
     }
 
     let arr = [];
 
-    addBtn.addEventListener('click', () => {
-        if (arr.length > 0) {
-            arr = [];
-            arr.push(new PlantObj(textInput.value, numInput.value));
-        } else {
-            arr.push(new PlantObj(textInput.value, numInput.value));
-            localStorage.setItem('plant', JSON.stringify(arr[0]));
-
-            storePlant();
-        }
-        textInput.value = '';
-        numInput.value = '';
+    addBtnG3.addEventListener('click', () => {
+        removePlant();
+        arr.push(new PlantG3(textInputG3.value, numInputG3.value));
+        localStorage.setItem('plantG3', JSON.stringify(arr[0]));
+        storePlant();
+        textInputG3.value = '';
+        numInputG3.value = '';
     });
 
-    removeBtn.addEventListener('click', () => {
-        localStorage.removeItem('plant');
-        plant.textContent = '';
+    removeBtnG3.addEventListener('click', () => {
+        removePlant();
+    });
+
+    function removePlant() {
+        localStorage.removeItem('plantG3');
+        plantG3.textContent = '';
         arr = [];
-    });
+    }
 
     function storePlant() {
-        if (localStorage.getItem('plant')) {
+        if (localStorage.getItem('plantG3')) {
 
-            const parsedObj = JSON.parse(localStorage.getItem('plant'));
+            const parsedObj = JSON.parse(localStorage.getItem('plantG3'));
 
-            garden.appendChild(plant);
+            gardenG3.appendChild(plantG3);
 
             for (const [key, value] of Object.entries(parsedObj)) {
                     const span = document.createElement('span');
                     span.textContent = `${key}: ${value}; `;
-                    plant.appendChild(span);
+                    plantG3.appendChild(span);
             }
     }
 }
@@ -112,7 +112,15 @@ function createGarden3() {
 }
 createGarden3();
 
+function createGarden4() {
+    const gardenG4 = document.querySelector('#garden-4');
+    const textInputG4 = document.querySelector('g4-text-input');
+    const numInputG4 = document.querySelector('g4-num-input');
+    const addBtnG4 = document.querySelector('#g4-add-btn');
+    const removeBtnG4 = document.querySelector('#g4-rm-btn');
+}
 
+createGarden4();
 
 /*
 function test() {
