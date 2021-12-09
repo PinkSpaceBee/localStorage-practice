@@ -119,6 +119,8 @@ function createGarden4() {
     const addBtnG4 = document.querySelector('#g4-add-btn');
     const removeBtnG4 = document.querySelector('#g4-rm-btn');
     const plantG4 = gardenG4.appendChild(document.createElement('div'));
+    
+    let arr = [];
 
     function PlantG4(name, quantity) {
         this.name = name;
@@ -126,38 +128,44 @@ function createGarden4() {
     }
 
     addBtnG4.addEventListener('click', () => {
+        localStorage.removeItem(plantG4);
+        // object instance is created and populated
         arr.push(new PlantG4(textInputG4.value, numInputG4.value));
+        // object is stored in lS as a string
         localStorage.setItem('plantG4', JSON.stringify(arr));
         storePlant();
-        // works correctly 
         console.log(localStorage.getItem('plantG4'));
-        /*
-        populates an arr with objects
-        arr.push(new PlantG4('x', 'y'))
-        console.log(localStorage.getItem('plantG4'));
-        */
     });
-    removeBtnG4.addEventListener('click', () => {});
-
-    let arr = [];
+    removeBtnG4.addEventListener('click', () => {
+        localStorage.clear();
+        plantG4.textContent = '';
+    });
 
     function storePlant() {
         if (localStorage.getItem('plantG4')) {
             // an array of objects
             const parsedArr = JSON.parse(localStorage.getItem('plantG4'));
-            
-            for (const [key, value] of Object.entries(parsedArr)) {
-                const p = plantG4.appendChild(document.createElement('p'));
-                p.textContent = `${key}: ${value}`;
 
-            }
+            console.log(Array.isArray(parsedArr));
+            console.log(parsedArr[parsedArr.length-1])
+            /*ok so it like builds an entire array every time and appends all its children to the div. and I kinda know how to fix it, but I'm so tired and my brain is mushy */
+
+            console.log(`s0 ${parsedArr.find(e => parsedArr.indexOf(parsedArr[[parsedArr.length-1]]))}`);
+            console.log(`s1 ${parsedArr.indexOf(parsedArr[[parsedArr.length-1]])}`)
+
+            /* ok, kinda works but each key/value pair should be stored in p or div, becausr it looks messy now, all these values are stored as one long-ass string*/
+            const teapot = parsedArr[[parsedArr.length-1]];
+            console.log(`t0 ${teapot.name}`);
+            console.log(`t1 ${teapot}`);
+                for (const [key, value] of Object.entries(teapot)) {
+                    const span = plantG4.appendChild(document.createElement('span'));
+                    span.textContent = `${key}: ${value}; `;
+                    console.log(span.textContent);
+                }
+
         }
     }
-
-    function foo(obj) {
-
-    }
-    
+    storePlant();
 }
 
 createGarden4();
