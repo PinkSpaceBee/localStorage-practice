@@ -114,64 +114,50 @@ createGarden3();
 
 function createGarden4() {
     const gardenG4 = document.querySelector('#garden-4');
-    const textInputG4 = document.querySelector('g4-text-input');
-    const numInputG4 = document.querySelector('g4-num-input');
+    const textInputG4 = document.querySelector('#g4-text-input');
+    const numInputG4 = document.querySelector('#g4-num-input');
     const addBtnG4 = document.querySelector('#g4-add-btn');
     const removeBtnG4 = document.querySelector('#g4-rm-btn');
-}
+    const plantG4 = gardenG4.appendChild(document.createElement('div'));
 
-createGarden4();
+    function PlantG4(name, quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
 
-/*
-function test() {
-    const arr = [{q: 'q1', w: 'w1'}];
-    const body = document.querySelector('body');
-    const div = document.createElement('div');
-
-    const buttonA = body.appendChild(document.createElement('button'));
-    buttonA.textContent = 'press me';
-    const buttonR = body.appendChild(document.createElement('button'));
-    buttonR.textContent = `I'M A DESTRIYER OF WORLDS`;
-
-    buttonA.addEventListener('click', () => {
-        localStorage.setItem('div', JSON.stringify(arr[0]));
-        storeObj();
-
+    addBtnG4.addEventListener('click', () => {
+        arr.push(new PlantG4(textInputG4.value, numInputG4.value));
+        localStorage.setItem('plantG4', JSON.stringify(arr));
+        storePlant();
+        // works correctly 
+        console.log(localStorage.getItem('plantG4'));
+        /*
+        populates an arr with objects
+        arr.push(new PlantG4('x', 'y'))
+        console.log(localStorage.getItem('plantG4'));
+        */
     });
-    buttonR.addEventListener('click', () => {
-        removeObj();
-    });
+    removeBtnG4.addEventListener('click', () => {});
 
-    function storeObj() {
-        if (localStorage.getItem('div')) {
-            body.appendChild(div);
+    let arr = [];
 
-            const parsed = JSON.parse(localStorage.getItem('div'));
-            const nonParsed = localStorage.getItem('div');
+    function storePlant() {
+        if (localStorage.getItem('plantG4')) {
+            // an array of objects
+            const parsedArr = JSON.parse(localStorage.getItem('plantG4'));
+            
+            for (const [key, value] of Object.entries(parsedArr)) {
+                const p = plantG4.appendChild(document.createElement('p'));
+                p.textContent = `${key}: ${value}`;
 
-            console.log(`check p0 ${JSON.parse(localStorage.getItem('div'))}`);
-            console.log(`check p1 ${typeof JSON.parse(localStorage.getItem('div'))}`);
-            console.log(`check p2 ${JSON.parse(localStorage.getItem('div'['length']))}`);
-            console.log(`check p3 ${parsed.hasOwnProperty('q')}`);
-            console.log(`check np0 ${nonParsed}`);
-
-            for (const value of Object.values(parsed)) {
-                const span = document.createElement('span');
-                span.textContent = `${value }`;
-                div.appendChild(span);
             }
-
-            console.log(`check 0 ${localStorage.getItem(arr[0])}`);
-            console.log(`check 1 ${localStorage.getItem('div')}`);
-            console.log(`check 2 ${typeof localStorage.getItem('div')}`);
         }
     }
 
-    function removeObj() {
-        localStorage.removeItem('div');
-        div.remove();
-    }
+    function foo(obj) {
 
-    storeObj();
     }
-*/
+    
+}
+
+createGarden4();
