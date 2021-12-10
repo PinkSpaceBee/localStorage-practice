@@ -1,3 +1,4 @@
+
 function createGarden1() {
     const gardenG1 = document.querySelector('#garden-1');
     const addBtnG1 = document.querySelector('#g1-add-btn');
@@ -128,14 +129,15 @@ function createGarden4() {
     }
 
     addBtnG4.addEventListener('click', () => {
-        localStorage.removeItem(plantG4);
+        //localStorage.removeItem(plantG4);
         // object instance is created and populated
         arr.push(new PlantG4(textInputG4.value, numInputG4.value));
         // object is stored in lS as a string
         localStorage.setItem('plantG4', JSON.stringify(arr));
+        console.log(`a0 ${arr}`);
         storePlant();
-        console.log(localStorage.getItem('plantG4'));
     });
+
     removeBtnG4.addEventListener('click', () => {
         localStorage.clear();
         plantG4.textContent = '';
@@ -146,25 +148,41 @@ function createGarden4() {
             // an array of objects
             const parsedArr = JSON.parse(localStorage.getItem('plantG4'));
 
-            console.log(Array.isArray(parsedArr));
-            console.log(parsedArr[parsedArr.length-1])
-            /*ok so it like builds an entire array every time and appends all its children to the div. and I kinda know how to fix it, but I'm so tired and my brain is mushy */
-
-            console.log(`s0 ${parsedArr.find(e => parsedArr.indexOf(parsedArr[[parsedArr.length-1]]))}`);
-            console.log(`s1 ${parsedArr.indexOf(parsedArr[[parsedArr.length-1]])}`)
-
-            /* ok, kinda works but each key/value pair should be stored in p or div, becausr it looks messy now, all these values are stored as one long-ass string*/
             const lastElemofArr = parsedArr[[parsedArr.length-1]];
-
+            const p = document.createElement('p');
+                /*
                 for (const [key, value] of Object.entries(lastElemofArr)) {
-                    const span = plantG4.appendChild(document.createElement('span'));
+                    // I append span to p so every new plant takes a new line 
+                    const span = p.appendChild(document.createElement('span'));
+                    plantG4.appendChild(p);
                     span.textContent = `${key}: ${value}; `;
-                    console.log(span.textContent);
                 }
+                */
 
+                console.log(parsedArr);
         }
     }
     storePlant();
 }
 
 createGarden4();
+
+function foo1() {
+    const body = document.querySelector('body');
+    const div = body.appendChild(document.createElement('div'));
+    const btn = div.appendChild(document.createElement('button'));
+    btn.textContent = 'press me';
+    const p = document.createElement('p');
+    body.appendChild(p);
+    p.textContent = 'test';
+
+    function Constructor(x) {
+        this.x = x;
+    }
+    
+    //const arr = [];
+    console.log('what the fuck');
+}
+
+foo1()
+
