@@ -154,10 +154,9 @@ function createGarden4() {
             console.log(`s1 ${parsedArr.indexOf(parsedArr[[parsedArr.length-1]])}`)
 
             /* ok, kinda works but each key/value pair should be stored in p or div, becausr it looks messy now, all these values are stored as one long-ass string*/
-            const teapot = parsedArr[[parsedArr.length-1]];
-            console.log(`t0 ${teapot.name}`);
-            console.log(`t1 ${teapot}`);
-                for (const [key, value] of Object.entries(teapot)) {
+            const lastElemofArr = parsedArr[[parsedArr.length-1]];
+
+                for (const [key, value] of Object.entries(lastElemofArr)) {
                     const span = plantG4.appendChild(document.createElement('span'));
                     span.textContent = `${key}: ${value}; `;
                     console.log(span.textContent);
