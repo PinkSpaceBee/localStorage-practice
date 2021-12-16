@@ -167,22 +167,5 @@ function createGarden4() {
 
 createGarden4();
 
-function foo1() {
-    const body = document.querySelector('body');
-    const div = body.appendChild(document.createElement('div'));
-    const btn = div.appendChild(document.createElement('button'));
-    btn.textContent = 'press me';
-    const p = document.createElement('p');
-    body.appendChild(p);
-    p.textContent = 'test';
 
-    function Constructor(x) {
-        this.x = x;
-    }
-    
-    //const arr = [];
-    console.log('what the fuck');
-}
-
-foo1()
 
