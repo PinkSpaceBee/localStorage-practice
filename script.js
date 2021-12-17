@@ -151,7 +151,8 @@ function createGarden4() {
             p.textContent = `${key}: ${value}`;
         }
     }
-
+/* ok I KNOW this is shitty, but rn I can't think of a way to do it differently. I'll return to this later when I have more experience and rewrite it. As for now, I have a function that appends new divs with content to the page and is being called in eventListener; and I have this script below that retrieving data from localStorage and creates divsbased on current lS status.
+*/
     for (const obj of Object.values(currentArr)) {
         for (const [key, value] of Object.entries(obj)) {
             const p = plantsG4.appendChild(document.createElement('p'));
