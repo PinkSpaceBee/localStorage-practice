@@ -129,6 +129,8 @@ function createGarden4() {
     addBtnG4.addEventListener('click', () => {
         storeArr();
         showPlant();
+        textInputG4.value = '';
+        numInputG4.value = '';
     });
 
     removeBtnG4.addEventListener('click', () => {
