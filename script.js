@@ -119,9 +119,7 @@ function createGarden4() {
     const numInputG4 = document.querySelector('#g4-num-input');
     const addBtnG4 = document.querySelector('#g4-add-btn');
     const removeBtnG4 = document.querySelector('#g4-rm-btn');
-    const plantG4 = gardenG4.appendChild(document.createElement('div'));
-    
-    let arr = [];
+    const plantsG4 = gardenG4.appendChild(document.createElement('div'));
 
     function PlantG4(name, quantity) {
         this.name = name;
@@ -129,40 +127,37 @@ function createGarden4() {
     }
 
     addBtnG4.addEventListener('click', () => {
-        //localStorage.removeItem(plantG4);
-        // object instance is created and populated
-        arr.push(new PlantG4(textInputG4.value, numInputG4.value));
-        // object is stored in lS as a string
-        localStorage.setItem('plantG4', JSON.stringify(arr));
-        console.log(`a0 ${arr}`);
-        storePlant();
+        storeArr();
+        showPlant();
     });
 
     removeBtnG4.addEventListener('click', () => {
         localStorage.clear();
-        plantG4.textContent = '';
+        plantsG4.textContent = '';
+        currentArr = [];
     });
 
-    function storePlant() {
-        if (localStorage.getItem('plantG4')) {
-            // an array of objects
-            const parsedArr = JSON.parse(localStorage.getItem('plantG4'));
+    let currentArr = localStorage.getItem('storedArr') ? JSON.parse(localStorage.getItem('storedArr')) : [];
 
-            const lastElemofArr = parsedArr[[parsedArr.length-1]];
-            const p = document.createElement('p');
-                /*
-                for (const [key, value] of Object.entries(lastElemofArr)) {
-                    // I append span to p so every new plant takes a new line 
-                    const span = p.appendChild(document.createElement('span'));
-                    plantG4.appendChild(p);
-                    span.textContent = `${key}: ${value}; `;
-                }
-                */
+    function storeArr() {
+        const entry = new PlantG4(textInputG4.value, numInputG4.value);
+        currentArr.push(entry);
+        localStorage.setItem('storedArr', JSON.stringify(currentArr));
+    }
 
-                console.log(parsedArr);
+    function showPlant() {
+        for (const [key, value] of Object.entries(currentArr[currentArr.length - 1])) {
+            const p = plantsG4.appendChild(document.createElement('p'));
+            p.textContent = `${key}: ${value}`;
         }
     }
-    storePlant();
+
+    for (const obj of Object.values(currentArr)) {
+        for (const [key, value] of Object.entries(obj)) {
+            const p = plantsG4.appendChild(document.createElement('p'));
+            p.textContent = `${key}: ${value}`;
+        }
+    }
 }
 
 createGarden4();
