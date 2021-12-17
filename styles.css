@@ -1,0 +1,47 @@
+body {
+    display: grid;
+    justify-content: center;
+}
+
+body div {
+    width: 75vw;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 600px) {
+    body div {
+        width: 60vw;
+    }
+}
+
+@media (min-width: 960px) {
+    body div {
+        width: 40vw;
+    }
+}
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 1000;
+    letter-spacing: .2rem;
+}
+
+#garden-1 {
+    background-color: rgba(255, 150, 143, 1);
+}
+
+#garden-1 h2 {
+    color: rgba(129, 66, 245, 1);
+}
+
+#garden-2 { 
+    background-color: rgba(255, 214, 173, 1);
+}
+
+#garden-3 {
+    background-color: rgba(186, 224, 191, 1);
+}
+
+#garden-4 {
+    background-color: rgba(213, 186, 255, 1);
+}
