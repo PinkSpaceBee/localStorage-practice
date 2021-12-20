@@ -3,23 +3,32 @@ function createGarden1() {
     const gardenG1 = document.querySelector('#garden-1');
     const addBtnG1 = document.querySelector('#g1-add-btn');
     const removeBtnG1 = document.querySelector('#g1-rm-btn');
+    const btnWrap = document.querySelector('.js-btn-wrap');
+
+    const img = document.createElement('img');
+    img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
 
     const tulip = document.createElement('div');
+    const p = document.createElement('p');
 
     addBtnG1.addEventListener('click', () => {
         localStorage.setItem('tulip', 'tulip');
+        localStorage.setItem('img', img);
         storePlant();
     });
 
     removeBtnG1.addEventListener('click', () => {
         localStorage.removeItem('tulip');
+        img.remove();
         tulip.remove();
     });
 
     function storePlant() {
         if (localStorage.getItem('tulip')) {
-            tulip.textContent = localStorage.getItem('tulip');
-            gardenG1.insertBefore(tulip, addBtnG1);
+            p.textContent = localStorage.getItem('tulip');
+            tulip.appendChild(img);
+            tulip.appendChild(p);
+            gardenG1.insertBefore(tulip, btnWrap);
         }
     }
     storePlant();

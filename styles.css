@@ -1,47 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
+
 body {
     display: grid;
     justify-content: center;
 }
 
-body div {
+body > div {
     width: 75vw;
-    margin-bottom: 30px;
+    margin-bottom: 3.5rem;
+    padding: 2rem 3rem 3.5rem 3rem;
 }
 
-@media (min-width: 600px) {
-    body div {
-        width: 60vw;
-    }
+body > div div {
+    display: inline-grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.4em;
 }
 
-@media (min-width: 960px) {
-    body div {
-        width: 40vw;
-    }
-}
 h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 1000;
-    letter-spacing: .2rem;
+    font-family: 'Lora', serif;
+    font-size: 2.4em;
+    letter-spacing: .1rem;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+button {
+    display: grid;
+    background-color: aquamarine;
+}
+
+input {
+}
+
+.js-btn-wrap {
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 1fr;
 }
 
 #garden-1 {
-    background-color: rgba(255, 150, 143, 1);
-}
-
-#garden-1 h2 {
-    color: rgba(129, 66, 245, 1);
-}
-
-#garden-2 { 
-    background-color: rgba(255, 214, 173, 1);
-}
-
-#garden-3 {
     background-color: rgba(186, 224, 191, 1);
 }
 
-#garden-4 {
-    background-color: rgba(213, 186, 255, 1);
+#garden-1 h2 {
+    color: rgba(175, 155, 95, 1);
 }
+
+#garden-1 button {
+    border: 2px solid rgba(175, 155, 95, 1);
+}
+
+#garden-2 { 
+    background-color: rgba(214, 224, 164, 1);
+}
+
+#garden-2 h2 {
+    color: rgba(95, 156, 120, 1);
+}
+
+#garden-3 {
+    background-color: rgba(225, 209, 235, 1);
+}
+
+#garden-3 h2 {
+    color:rgba(173, 141, 186, 1);
+}
+
+#garden-4 {
+    background-color: rgba(186, 219, 208, 1);
+}
+
+#garden-4 h2 {
+    color:rgb(160, 25, 146);
+}
+
+@media (min-width: 481px) {
+    body div {
+        width: 60vw;
+    }
+
+    body > div div {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.4em;
+    }
+}
+
+@media (min-width: 1025px) {
+    body div {
+        width: 40vw;
+    }
+
+    body > div div {
+        display: grid;
+        grid-template-columns: 1fr 7fr;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.4em;
+    }
+}
+
