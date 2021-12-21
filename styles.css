@@ -2,38 +2,47 @@
 
 body {
     display: grid;
-    justify-content: center;
 }
 
 body > div {
-    width: 75vw;
+    background-color: sandybrown;
+}
+
+@media screen and (min-device-width: 480px) {
+    body > div {
+        background-color: palegreen;
+    }
+  }
+
+/*
+body > div {
     margin-bottom: 3.5rem;
     padding: 2rem 3rem 3.5rem 3rem;
 }
 
-body > div div {
-    display: inline-grid;
+#tulip-container {
+    display: grid;
     grid-template-columns: 1fr 4fr;
     align-items: center;
+    border: 3px solid salmon;
     margin-bottom: 20px;
-    font-size: 1.4em;
 }
 
 h2 {
     font-family: 'Lora', serif;
-    font-size: 2.4em;
+    font-size: 5em;
     letter-spacing: .1rem;
 }
 
 p {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
+    font-size: 1.5em;
     line-height: 1.5;
 }
 
 button {
     display: grid;
-    background-color: aquamarine;
+    width: 90%;
 }
 
 input {
@@ -41,8 +50,9 @@ input {
 
 .js-btn-wrap {
     display: grid;
-    width: 50%;
+    color: beige;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 
 #garden-1 {
@@ -81,12 +91,27 @@ input {
     color:rgb(160, 25, 146);
 }
 
-@media (min-width: 481px) {
+@media only screen and (min-width: 481px) {
+    body {
+        background-color: aqua;
+    }
+
     body div {
         width: 60vw;
     }
 
-    body > div div {
+    h2 {
+        font-family: 'Lora', serif;
+        font-size: 2.5em;
+        letter-spacing: .1rem;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.5;
+    }
+
+    #tulip-container {
         display: grid;
         grid-template-columns: 1fr 5fr;
         align-items: center;
@@ -95,7 +120,7 @@ input {
     }
 }
 
-@media (min-width: 1025px) {
+@media only screen and (min-width: 1025px) {
     body div {
         width: 40vw;
     }
@@ -109,3 +134,4 @@ input {
     }
 }
 
+*/

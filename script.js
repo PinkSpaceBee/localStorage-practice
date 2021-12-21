@@ -9,6 +9,7 @@ function createGarden1() {
     img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
 
     const tulip = document.createElement('div');
+    tulip.setAttribute('id', 'tulip-container')
     const p = document.createElement('p');
 
     addBtnG1.addEventListener('click', () => {
