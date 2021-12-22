@@ -2,30 +2,14 @@
 
 body {
     display: grid;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4;
 }
 
 body > div {
-    background-color: sandybrown;
-}
-
-@media screen and (min-device-width: 480px) {
-    body > div {
-        background-color: palegreen;
-    }
-  }
-
-/*
-body > div {
-    margin-bottom: 3.5rem;
-    padding: 2rem 3rem 3.5rem 3rem;
-}
-
-#tulip-container {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    align-items: center;
-    border: 3px solid salmon;
-    margin-bottom: 20px;
+    margin-bottom: 4rem;
+    padding: 3.5em 3em 6em 3em;
 }
 
 h2 {
@@ -34,25 +18,34 @@ h2 {
     letter-spacing: .1rem;
 }
 
-p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5em;
-    line-height: 1.5;
-}
-
 button {
-    display: grid;
     width: 90%;
+    height: 90px;
+    border-radius: 15px;
+    font-size: 3em;
 }
 
 input {
+    width: 90%;
+    height: 70px;
+    margin: 10px 0 25px 0;
+    padding: 0 0 0 10px;
+    font-size: 2.5em;
+    border: none;
 }
 
 .js-btn-wrap {
     display: grid;
-    color: beige;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    justify-items: start;
+    padding-top: 30px;
+}
+
+#tulip-container {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    align-items: center;
+    margin: 40px 0 0 0;
 }
 
 #garden-1 {
@@ -60,11 +53,12 @@ input {
 }
 
 #garden-1 h2 {
-    color: rgba(175, 155, 95, 1);
+    color: rgba(139, 121, 65, 1);
 }
 
 #garden-1 button {
-    border: 2px solid rgba(175, 155, 95, 1);
+    border: 4px solid rgba(139, 121, 65, 1);
+    color: rgba(139, 121, 65, 1);
 }
 
 #garden-2 { 
@@ -72,7 +66,12 @@ input {
 }
 
 #garden-2 h2 {
-    color: rgba(95, 156, 120, 1);
+    color: rgba(84, 139, 107, 1);
+}
+
+#garden-2 button {
+    border: 4px solid rgba(84, 139, 107, 1);
+    color: rgba(84, 139, 107, 1);
 }
 
 #garden-3 {
@@ -90,6 +89,27 @@ input {
 #garden-4 h2 {
     color:rgb(160, 25, 146);
 }
+
+@media screen and (min-device-width: 480px) {
+    body > div {
+        background-color: palegreen;
+    }
+  }
+
+/*
+
+
+
+
+button {
+    display: grid;
+    width: 90%;
+}
+
+
+
+
+
 
 @media only screen and (min-width: 481px) {
     body {
