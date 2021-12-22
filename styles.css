@@ -19,7 +19,7 @@ h2 {
 }
 
 button {
-    width: 90%;
+    width: 93%;
     height: 90px;
     border-radius: 15px;
     font-size: 3em;
@@ -28,7 +28,7 @@ button {
 input {
     width: 90%;
     height: 70px;
-    margin: 60px 0 10px 0;
+    margin: 10px 0 30px 0;
     padding: 0 0 0 10px;
     font-size: 2.5em;
     border: none;
@@ -41,11 +41,16 @@ input {
     padding-top: 30px;
 }
 
+.input-wrap {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
 .plant-container {
     display: grid;
     grid-template-columns: 1fr 9fr;
     align-items: center;
-    margin: 40px 0 0 0;
+    margin: 40px 0 40px 0;
 }
 
 #garden-1 {
@@ -53,25 +58,25 @@ input {
 }
 
 #garden-1 h2 {
-    color: rgba(139, 121, 65, 1);
+    color: rgba(128, 109, 54, 1);
 }
 
 #garden-1 button {
-    border: 4px solid rgba(139, 121, 65, 1);
-    color: rgba(139, 121, 65, 1);
+    border: 4px solid rgba(128, 109, 54, 1);
+    color: rgba(128, 109, 54, 1);
 }
 
 #garden-2 { 
-    background-color: rgba(214, 224, 164, 1);
+    background-color: rgba(213, 224, 164, 1);
 }
 
 #garden-2 h2 {
-    color: rgba(84, 139, 107, 1);
+    color: rgba(72, 128, 95, 1);
 }
 
 #garden-2 button {
-    border: 4px solid rgba(84, 139, 107, 1);
-    color: rgba(84, 139, 107, 1);
+    border: 4px solid rgba(72, 128, 95, 1);
+    color: rgba(72, 128, 95, 1);
 }
 
 #garden-3 {
@@ -79,7 +84,12 @@ input {
 }
 
 #garden-3 h2 {
-    color:rgba(173, 141, 186, 1);
+    color:rgba(143, 115, 155, 1);
+}
+
+#garden-3 button {
+    border:4px solid rgba(143, 115, 155, 1);
+    color:rgba(143, 115, 155, 1);
 }
 
 #garden-4 {
