@@ -1,4 +1,4 @@
-
+/* Huh, because localStorage shares a scope, I can't assign img as a global variable. I mean I could find a way around it; maybe later */
 function createGarden1() {
     const gardenG1 = document.querySelector('#garden-1');
     const addBtnG1 = document.querySelector('#g1-add-btn');
@@ -9,7 +9,7 @@ function createGarden1() {
     img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
 
     const tulip = document.createElement('div');
-    tulip.setAttribute('id', 'tulip-container')
+    tulip.setAttribute('class', 'plant-container')
     const p = document.createElement('p');
 
     addBtnG1.addEventListener('click', () => {
@@ -42,7 +42,15 @@ function createGarden2() {
     const inputField = document.querySelector('#g2-input');
     const addBtnG2 = document.querySelector('#g2-add-btn');
     const removeBtnG2 = document.querySelector('#g2-rm-btn');
+    const btnWrap = document.querySelector('.js-btn-wrap');
+
+    const img = document.createElement('img');
+    img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
+
     const plantG2 = document.createElement('div');
+    plantG2.setAttribute('class', 'plant-container');
+    const p = document.createElement('p');
+
     /*
     OKAY BUT I DIDN'T KNOW THAT I COULD REACH LOCAL VARIABLES FROM DIFFERENT SCOPES USING LOCALSTORAGE WHAT THE ACTUAL FUCK. Like, when I modify the plant variable in the G3 function, the plant variable from the G2 also gets modified??? But how and why? The plant variable is local to its function scope, how can it be accessed from a different scope? 
     */
@@ -60,8 +68,10 @@ function createGarden2() {
 
     function storePlant() {
         if (localStorage.getItem('plantG2')) {
-            plantG2.textContent = localStorage.getItem('plantG2');
-            gardenG2.appendChild(plantG2);
+            p.textContent = localStorage.getItem('plantG2');
+            plantG2.appendChild(img);
+            plantG2.appendChild(p);
+            gardenG2.insertBefore(plantG2, inputField);
         }
     }
 
