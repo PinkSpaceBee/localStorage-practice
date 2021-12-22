@@ -42,7 +42,6 @@ function createGarden2() {
     const inputField = document.querySelector('#g2-input');
     const addBtnG2 = document.querySelector('#g2-add-btn');
     const removeBtnG2 = document.querySelector('#g2-rm-btn');
-    const btnWrap = document.querySelector('.js-btn-wrap');
 
     const img = document.createElement('img');
     img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
@@ -86,12 +85,17 @@ function createGarden3() {
     const numInputG3 = document.querySelector('#g3-num-input');
     const addBtnG3 = document.querySelector('#g3-add-btn');
     const removeBtnG3 = document.querySelector('#g3-rm-btn');
-    const plantG3 = document.createElement('div');
 
     function PlantG3(name, quantity) {
         this.name = name;
         this.quantity = quantity;
     }
+
+    const plantG3 = document.createElement('div');
+    plantG3.setAttribute('class', 'plant-container');
+
+    const img = document.createElement('img');
+    img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
 
     let arr = [];
 
@@ -118,14 +122,20 @@ function createGarden3() {
         if (localStorage.getItem('plantG3')) {
 
             const parsedObj = JSON.parse(localStorage.getItem('plantG3'));
+            const p = document.createElement('p');
 
-            gardenG3.appendChild(plantG3);
+            //gardenG3.appendChild(plantG3);
+            gardenG3.insertBefore(plantG3, document.querySelector('.input-wrap'))
+            plantG3.appendChild(img);
+            plantG3.appendChild(p);
 
-            for (const [key, value] of Object.entries(parsedObj)) {
+            for (const value of Object.values(parsedObj)) {
                     const span = document.createElement('span');
-                    span.textContent = `${key}: ${value}; `;
-                    plantG3.appendChild(span);
+                    span.textContent = `${value}, `;
+                    p.appendChild(span);
             }
+            const strMinusComma = p.lastChild.textContent.slice(0, -2);
+            p.lastChild.textContent = strMinusComma;
     }
 }
 

@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles.css">
-        <title>practicing localStorage</title>
         <script src="script.js" defer></script>
+        <title>practicing localStorage</title>
     </head>
     <body>
         <div id="garden-1">
@@ -29,8 +29,10 @@
             <h2>Third garden</h2>
             <p>New garden, new rules, baby! Here you can keep as many plants as you want, the place is enormous - but be careful: all plants must be the same. Just imagine a delightful garden full of crimson roses! Of course, if you get tired of roses, you can always grow something different. Cacti, anyone?</p>
             <p>Type in what plant and how many of them do you want to store here:</p>
-            <input type="text" id="g3-text-input" placeholder="who doesn't love roses?">
-            <input type="number" id="g3-num-input" placeholder="">
+            <div class="input-wrap">
+                <input type="text" id="g3-text-input" placeholder="who doesn't love roses?">
+                <input type="number" id="g3-num-input" placeholder="e.g. 10">
+            </div>
             <div class="js-btn-wrap">
                 <button id="g3-add-btn">add a plant</button>
                 <button id="g3-rm-btn">remove all plants</button>
@@ -40,8 +42,12 @@
             <h2>Fourth garden</h2>
             <p>And last but not least, the fourth garden! Here you may grow as many different plants as you want, and as many as you want! This garden stores an array of objects in the localStorage.</p>
             <p>Type in what plant and how many of them do you want to store here:</p>
-            <input type="text" id="g4-text-input" placeholder="">
-            <input type="number" id="g4-num-input" placeholder="">
+            <div class="input-wrap">
+                <p>Plant:</p>
+                <input type="text" id="g4-text-input" placeholder="">
+                <p>Quantity:</p>
+                <input type="number" id="g4-num-input" placeholder="">
+            </div>
             <div class="js-btn-wrap">
                 <button id="g4-add-btn">add a plant</button>
                 <button id="g4-rm-btn">remove all plants</button>
