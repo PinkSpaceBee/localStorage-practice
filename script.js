@@ -124,7 +124,6 @@ function createGarden3() {
             const parsedObj = JSON.parse(localStorage.getItem('plantG3'));
             const p = document.createElement('p');
 
-            //gardenG3.appendChild(plantG3);
             gardenG3.insertBefore(plantG3, document.querySelector('.input-wrap'))
             plantG3.appendChild(img);
             plantG3.appendChild(p);
@@ -161,109 +160,79 @@ function createGarden4() {
     const img = document.createElement('img');
     img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
 
+    const plantIcon = document.createElement('div');
+    plantIcon.appendChild(img);
+    const listTitle = plantIcon.appendChild(document.createElement('span'));
+    listTitle.textContent = 'Plants:';
+
     addBtnG4.addEventListener('click', () => {
         storeArr();
         showPlant();
     });
 
     removeBtnG4.addEventListener('click', () => {
-        currentArr = [];
-        localStorage.removeItem('storedArr');
-        document.querySelector('#g4-img').style.display = 'none';
+        /* 
+        What the actual fuck, I FORGOT TO FUCKING STORE THE WHOLE PLANT DIV IN THE STORAGE, LIKE OF COURSE THE REMOVE BUTTON DOESN'T WORK. My god, I'm so dumb I should be sterilized so I can't pass on my genes of exceptional stupidity :(
+        */
+        while (plantsG4.firstChild) {
+            plantsG4.removeChild(plantsG4.lastChild);
+        }
         plantsG4.textContent = '';
+        currentArr = [];
+        localStorage.clear();
     });
-
+    
     let currentArr = localStorage.getItem('storedArr') ? JSON.parse(localStorage.getItem('storedArr')) : [];
 
     function storeArr() {
+
         const entry = new PlantG4(textInputG4.value, numInputG4.value);
         currentArr.push(entry);
         localStorage.setItem('storedArr', JSON.stringify(currentArr));
     }
+    const ul = document.createElement('ul');
 
+    function idk() {
+        const 
+        const div = document.createElement('div');
+        div.textContent = '1';
+        plantsG4.appendChild(div);
+    }
+
+    idk();
+/*
     function showPlant() {
-        document.querySelector('#g4-img').style.display = 'block';
-
-        if (plantsG4.hasChildNodes()) {
-            const ul = plantsG4.appendChild(document.createElement('ul'));
-            const li = ul.appendChild(document.createElement('li'));
-            for (const value of Object.values(currentArr[currentArr.length - 1])) {
-
-                //const span = li.appendChild(document.createElement('span'));
-                //span.textContent = `${value}, `;
-
-                li.textContent = `${value}, `
-             }
-        } else {
-            for (const obj of Object.values(currentArr)) {
-                document.querySelector('#g4-img').style.display = 'block';
-
-                const ul = plantsG4.appendChild(document.createElement('ul'));
+ 
+            //console.log(currentArr.length);
+            console.log(localStorage.getItem('storedArr'));
+            if (plantsG4.hasChildNodes()) {
+                plantsG4.appendChild(ul);
+                plantsG4.insertBefore(plantIcon, ul);
                 const li = ul.appendChild(document.createElement('li'));
-
-                for (const value of Object.values(obj)) {
-
-                //const span = li.appendChild(document.createElement('span'));
-                //span.textContent = `${value}, `;
-                li.textContent = `${value}, `
+    
+                for (const value of Object.values(currentArr[currentArr.length - 1])) {
+                    const span = li.appendChild(document.createElement('span'));
+                    span.textContent = `${value}, `;
+                 }
+            } else {
+                plantsG4.appendChild(ul);
+                if (currentArr.length > 0) plantsG4.insertBefore(plantIcon, ul);
+    
+                for (const obj of Object.values(currentArr)) {
+                    const li = ul.appendChild(document.createElement('li'));
+    
+                    for (const value of Object.values(obj)) {
+    
+                        const span = li.appendChild(document.createElement('span'));
+                        span.textContent = `${value}, `;
+                 }
              }
-         }
-        }
-        textInputG4.value = '';
-        numInputG4.value = '';
-        console.dir(currentArr);
+            }
+            textInputG4.value = '';
+            numInputG4.value = '';
     }
 
-    showPlant();
-/*
-this is the original function that only appends the last child
-
-    function showPlant() {
-        document.querySelector('#g4-img').style.display = 'block';
-        for (const value of Object.values(currentArr[currentArr.length - 1])) {
-
-           //const div = plantsG4.appendChild(document.createElement('div'));
-           const span = plantsG4.appendChild(document.createElement('span'));
-           span.textContent = `${value}, `;
-           localStorage.setItem('span', 'span');
-           localStorage.getItem('span');
-        }
-        textInputG4.value = '';
-        numInputG4.value = '';
-
-        console.dir(currentArr);
-    }
-*/
-/*
-    for (const obj of Object.values(currentArr)) {
-        document.querySelector('#g4-img').style.display = 'block';
-        for (const value of Object.values(obj)) {
-            //const div = plantsG4.appendChild(document.createElement('div'));
-            
-            const span = plantsG4.appendChild(document.createElement('span'));
-            span.textContent = `${value}, `;
-     }
- }
- */
-/*
-    function showPlant() {
-        for (const [key, value] of Object.entries(currentArr[currentArr.length - 1])) {
-            const p = plantsG4.appendChild(document.createElement('p'));
-            p.textContent = `${key}: ${value} x`;
-        }
-        textInputG4.value = '';
-        numInputG4.value = '';
-    }
-*/
-/* ok I KNOW this is shitty, but rn I can't think of a way to do it differently. I'll return to this later when I have more experience and rewrite it. As for now, I have a function that appends new divs with content to the page and is being called in eventListener; and I have this script below that retrieving data from localStorage and creates divs based on current lS status.
-*/
-/*
-    for (const obj of Object.values(currentArr)) {
-        for (const [key, value] of Object.entries(obj)) {
-            const p = plantsG4.appendChild(document.createElement('p'));
-            p.textContent = `${key}: ${value} y `;
-        }
-    }
+   showPlant();
 */
 }
 

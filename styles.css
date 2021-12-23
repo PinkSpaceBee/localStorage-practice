@@ -109,8 +109,8 @@ input {
     color: rgba(197, 63, 157, 1);
 }
 
-#g4-img {
-    display: none;
+#garden-4 .plant-container {
+    grid-template-columns: 1fr;
 }
 
 @media screen and (min-device-width: 480px) {
