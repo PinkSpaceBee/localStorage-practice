@@ -14,7 +14,7 @@ function createGarden1() {
 
     addBtnG1.addEventListener('click', () => {
         localStorage.setItem('tulip', 'tulip');
-        localStorage.setItem('img', img);
+        //localStorage.setItem('img', img);
         storePlant();
     });
 
@@ -149,12 +149,17 @@ function createGarden4() {
     const numInputG4 = document.querySelector('#g4-num-input');
     const addBtnG4 = document.querySelector('#g4-add-btn');
     const removeBtnG4 = document.querySelector('#g4-rm-btn');
-    const plantsG4 = gardenG4.appendChild(document.createElement('div'));
 
     function PlantG4(name, quantity) {
         this.name = name;
         this.quantity = quantity;
     }
+
+    const plantsG4 = gardenG4.appendChild(document.createElement('div'));
+    plantsG4.setAttribute('class', 'plant-container');
+
+    const img = document.createElement('img');
+    img.setAttribute('src', "https://img.icons8.com/ios/50/000000/flower--v1.png");
 
     addBtnG4.addEventListener('click', () => {
         storeArr();
@@ -162,9 +167,10 @@ function createGarden4() {
     });
 
     removeBtnG4.addEventListener('click', () => {
-        localStorage.clear();
-        plantsG4.textContent = '';
         currentArr = [];
+        localStorage.removeItem('storedArr');
+        document.querySelector('#g4-img').style.display = 'none';
+        plantsG4.textContent = '';
     });
 
     let currentArr = localStorage.getItem('storedArr') ? JSON.parse(localStorage.getItem('storedArr')) : [];
@@ -176,21 +182,89 @@ function createGarden4() {
     }
 
     function showPlant() {
+        document.querySelector('#g4-img').style.display = 'block';
+
+        if (plantsG4.hasChildNodes()) {
+            const ul = plantsG4.appendChild(document.createElement('ul'));
+            const li = ul.appendChild(document.createElement('li'));
+            for (const value of Object.values(currentArr[currentArr.length - 1])) {
+
+                //const span = li.appendChild(document.createElement('span'));
+                //span.textContent = `${value}, `;
+
+                li.textContent = `${value}, `
+             }
+        } else {
+            for (const obj of Object.values(currentArr)) {
+                document.querySelector('#g4-img').style.display = 'block';
+
+                const ul = plantsG4.appendChild(document.createElement('ul'));
+                const li = ul.appendChild(document.createElement('li'));
+
+                for (const value of Object.values(obj)) {
+
+                //const span = li.appendChild(document.createElement('span'));
+                //span.textContent = `${value}, `;
+                li.textContent = `${value}, `
+             }
+         }
+        }
+        textInputG4.value = '';
+        numInputG4.value = '';
+        console.dir(currentArr);
+    }
+
+    showPlant();
+/*
+this is the original function that only appends the last child
+
+    function showPlant() {
+        document.querySelector('#g4-img').style.display = 'block';
+        for (const value of Object.values(currentArr[currentArr.length - 1])) {
+
+           //const div = plantsG4.appendChild(document.createElement('div'));
+           const span = plantsG4.appendChild(document.createElement('span'));
+           span.textContent = `${value}, `;
+           localStorage.setItem('span', 'span');
+           localStorage.getItem('span');
+        }
+        textInputG4.value = '';
+        numInputG4.value = '';
+
+        console.dir(currentArr);
+    }
+*/
+/*
+    for (const obj of Object.values(currentArr)) {
+        document.querySelector('#g4-img').style.display = 'block';
+        for (const value of Object.values(obj)) {
+            //const div = plantsG4.appendChild(document.createElement('div'));
+            
+            const span = plantsG4.appendChild(document.createElement('span'));
+            span.textContent = `${value}, `;
+     }
+ }
+ */
+/*
+    function showPlant() {
         for (const [key, value] of Object.entries(currentArr[currentArr.length - 1])) {
             const p = plantsG4.appendChild(document.createElement('p'));
-            p.textContent = `${key}: ${value}`;
+            p.textContent = `${key}: ${value} x`;
         }
         textInputG4.value = '';
         numInputG4.value = '';
     }
-/* ok I KNOW this is shitty, but rn I can't think of a way to do it differently. I'll return to this later when I have more experience and rewrite it. As for now, I have a function that appends new divs with content to the page and is being called in eventListener; and I have this script below that retrieving data from localStorage and creates divsbased on current lS status.
 */
+/* ok I KNOW this is shitty, but rn I can't think of a way to do it differently. I'll return to this later when I have more experience and rewrite it. As for now, I have a function that appends new divs with content to the page and is being called in eventListener; and I have this script below that retrieving data from localStorage and creates divs based on current lS status.
+*/
+/*
     for (const obj of Object.values(currentArr)) {
         for (const [key, value] of Object.entries(obj)) {
             const p = plantsG4.appendChild(document.createElement('p'));
-            p.textContent = `${key}: ${value}`;
+            p.textContent = `${key}: ${value} y `;
         }
     }
+*/
 }
 
 createGarden4();
