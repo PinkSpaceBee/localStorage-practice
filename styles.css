@@ -2,6 +2,7 @@
 
 body {
     display: grid;
+    justify-items: center;
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
@@ -28,8 +29,8 @@ button {
 input {
     width: 90%;
     height: 70px;
-    margin: 10px 0 30px 0;
-    padding: 0 0 0 10px;
+    margin: 0 0 30px 0;
+    padding-left: 10px;
     font-size: 2.5em;
     border: none;
 }
@@ -44,6 +45,7 @@ input {
 .input-wrap {
     display: grid;
     grid-template-columns: 4fr 1fr;
+    grid-gap: 20px;
 }
 
 .plant-container {
@@ -98,6 +100,7 @@ input {
 
 #garden-4 {
     background-color: rgba(186, 219, 208, 1);
+    padding: 3.5em 3em 4em 3em;
 }
 
 #garden-4 h2 {
@@ -192,15 +195,137 @@ input {
 }
 
 /* for laptops */
-@media screen and (min-device-width: 992px) {
+@media screen and (min-device-width: 991px) {
     body > div {
-        color: teal;
+        width: 55%;
+        padding: 2em 4em 6em 4em;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    button {
+        width: 80%;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+    
+    input {
+        width: 100%;
+        height: 50px;
+        font-size: 1.4rem;
+        margin-bottom: 40px;
+    }
+        
+    ul {
+        margin-top: 10px;
+    }
+
+    .plant-container {
+        align-items: center;
+        grid-gap: 20px;
+        font-size: 1.7rem;
+    }
+
+    #garden-4 {
+        padding: 2em 4em 2em 4em;
+    }
+
+    #garden-4 .plant-container {
+        font-size: 1.5rem;
+        margin-top: 60px;
+    }
+
+    #garden-4 .plant-container div {
+        align-items: center;
+        grid-gap: 20px;
+        font-size: 1.5rem;
     }
 }
 
 /* for desktop */
 @media screen and (min-device-width: 1024px) {
     body > div {
-        color: greenyellow;
+        width: 50%;
+        padding: 2em 4em 6em 4em;
+    }
+
+    h2 {
+        font-size: 2.7rem;
+        letter-spacing: 0;
+        margin-bottom: 0;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    button {
+        width: 90%;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+    
+    input {
+        width: 100%;
+        height: 40px;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+        
+    ul {
+        margin-top: 10px;
+    }
+
+    .js-btn-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: start;
+        padding-top: 0px;
+    }
+
+    .plant-container {
+        align-items: center;
+        grid-gap: 7px;
+        font-size: 1.7rem;
+        margin-top: 0;
+    }
+
+    #garden-1 button {
+        border-width: 3px;
+    }
+
+    #garden-2 button {
+        border-width: 3px;
+    }
+
+    #garden-3 button {
+        border-width: 3px;
+    }
+
+    #garden-4 button {
+        border-width: 3px;
+    }
+
+    #garden-4 {
+        padding: 2em 4em 2em 4em;
+    }
+
+    #garden-4 .plant-container {
+        font-size: 1.1rem;
+        margin-top: 40px;
+    }
+
+    #garden-4 .plant-container div {
+        align-items: center;
+        grid-gap: 20px;
+        font-size: 1.1rem;
     }
 }
