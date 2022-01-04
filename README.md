@@ -11,10 +11,4 @@ https://pinkspacebee.github.io/localStorage-practice/
 Link to the flower icon:
 https://icons8.com/icons/set/flower
 
-***
-TO FIX: 
 
-1, YELLOW: Fourth garden div appends an empty div even if no plants were added, and because of this the G4 div has a lot of empty space at the bottom 
-
-2, YELLOW: You forgot to trim the comma in 3rd garden's p
-***
