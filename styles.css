@@ -119,8 +119,45 @@ input {
     font-size: 1.5rem;
 }
 
-@media screen and (min-device-width: 480px) {
+/* for tablets */
+@media screen and (min-device-width: 481px) {
     body > div {
-        background-color: palegreen;
+        padding: 6em;
+    }
+
+    p {
+        font-size: 1.7rem;
+        line-height: 1.7;
+    }
+
+    button {
+        width: 85%;
+        font-size: 2.2em;
+    }
+    
+    input {
+        font-size: 1.7em;
+    }
+
+    #garden-4 .plant-container div {
+        font-size: 1.7rem;
+    }
+
+    #garden-4 .plant-container {
+        font-size: 1.7rem;
     }
   }
+
+/* for laptops */
+@media screen and (min-device-width: 769px) {
+    body > div {
+        color: pink;
+    }
+}
+
+/* for desktop */
+@media screen and (min-device-width: 1025px) {
+    body > div {
+        color: greenyellow;
+    }
+}
