@@ -113,6 +113,12 @@ input {
     grid-template-columns: 1fr;
 }
 
+#garden-4 .plant-container div {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    font-size: 1.5rem;
+}
+
 @media screen and (min-device-width: 480px) {
     body > div {
         background-color: palegreen;
