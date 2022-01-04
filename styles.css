@@ -119,7 +119,7 @@ input {
     font-size: 1.5rem;
 }
 
-/* for tablets */
+/* for portrait tablets */
 @media screen and (min-device-width: 481px) {
     body > div {
         padding: 6em;
@@ -148,15 +148,58 @@ input {
     }
   }
 
-/* for laptops */
+/* for landscape tablets */
 @media screen and (min-device-width: 769px) {
     body > div {
-        color: pink;
+        padding: 6em;
+    }
+
+    h2 {
+        font-size: 3.5rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+        line-height: 1.6;
+    }
+
+    button {
+        width: 80%;
+        height: 70px;
+        font-size: 2.2em;
+    }
+    
+    input {
+        font-size: 1.7em;
+        margin-bottom: 60px;
+    }
+
+    .js-btn-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        padding-top: 0px;
+    }
+
+    #garden-4 .plant-container div {
+        align-items: center;
+        font-size: 1.7rem;
+    }
+
+    #garden-4 .plant-container {
+        font-size: 1.7rem;
+    }
+}
+
+/* for laptops */
+@media screen and (min-device-width: 992px) {
+    body > div {
+        color: teal;
     }
 }
 
 /* for desktop */
-@media screen and (min-device-width: 1025px) {
+@media screen and (min-device-width: 1024px) {
     body > div {
         color: greenyellow;
     }
