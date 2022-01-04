@@ -120,7 +120,7 @@ function createGarden3() {
 
     function storePlant() {
         if (localStorage.getItem('plantG3')) {
-
+            console.dir(plantG3)
             const parsedObj = JSON.parse(localStorage.getItem('plantG3'));
             const p = document.createElement('p');
 
@@ -171,15 +171,14 @@ function createGarden4() {
     });
 
     removeBtnG4.addEventListener('click', () => {
-        /* 
-        What the actual fuck, I FORGOT TO FUCKING STORE THE WHOLE PLANT DIV IN THE STORAGE, LIKE OF COURSE THE REMOVE BUTTON DOESN'T WORK. My god, I'm so dumb I should be sterilized so I can't pass on my genes of exceptional stupidity :(
-        */
+        //temporary; I kinda fucked up and can't figure out another way to do it
+        document.location.reload();
         while (plantsG4.firstChild) {
             plantsG4.removeChild(plantsG4.lastChild);
         }
         plantsG4.textContent = '';
         currentArr = [];
-        localStorage.clear();
+        localStorage.removeItem('storedArr');
     });
     
     let currentArr = localStorage.getItem('storedArr') ? JSON.parse(localStorage.getItem('storedArr')) : [];
@@ -190,21 +189,11 @@ function createGarden4() {
         currentArr.push(entry);
         localStorage.setItem('storedArr', JSON.stringify(currentArr));
     }
-    const ul = document.createElement('ul');
 
-    function idk() {
-        const 
-        const div = document.createElement('div');
-        div.textContent = '1';
-        plantsG4.appendChild(div);
-    }
+const ul = document.createElement('ul');
 
-    idk();
-/*
     function showPlant() {
- 
-            //console.log(currentArr.length);
-            console.log(localStorage.getItem('storedArr'));
+
             if (plantsG4.hasChildNodes()) {
                 plantsG4.appendChild(ul);
                 plantsG4.insertBefore(plantIcon, ul);
@@ -214,9 +203,12 @@ function createGarden4() {
                     const span = li.appendChild(document.createElement('span'));
                     span.textContent = `${value}, `;
                  }
+                 const strMinusComma = li.lastChild.textContent.slice(0, -2);
+                 li.lastChild.textContent = strMinusComma;
             } else {
+                // so the DOM elements are still there after the page reload
                 plantsG4.appendChild(ul);
-                if (currentArr.length > 0) plantsG4.insertBefore(plantIcon, ul);
+                plantsG4.insertBefore(plantIcon, ul);
     
                 for (const obj of Object.values(currentArr)) {
                     const li = ul.appendChild(document.createElement('li'));
@@ -226,6 +218,8 @@ function createGarden4() {
                         const span = li.appendChild(document.createElement('span'));
                         span.textContent = `${value}, `;
                  }
+                 const strMinusComma = li.lastChild.textContent.slice(0, -2);
+                 li.lastChild.textContent = strMinusComma;
              }
             }
             textInputG4.value = '';
@@ -233,7 +227,7 @@ function createGarden4() {
     }
 
    showPlant();
-*/
+
 }
 
 createGarden4();
