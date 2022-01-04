@@ -1,4 +1,3 @@
-/* Huh, because localStorage shares a scope, I can't assign img as a global variable. I mean I could find a way around it; maybe later */
 function createGarden1() {
     const gardenG1 = document.querySelector('#garden-1');
     const addBtnG1 = document.querySelector('#g1-add-btn');
@@ -14,7 +13,6 @@ function createGarden1() {
 
     addBtnG1.addEventListener('click', () => {
         localStorage.setItem('tulip', 'tulip');
-        //localStorage.setItem('img', img);
         storePlant();
     });
 
@@ -171,7 +169,9 @@ function createGarden4() {
     });
 
     removeBtnG4.addEventListener('click', () => {
-        //temporary; I kinda fucked up and can't figure out another way to do it
+        /*
+        temporary; I kinda fucked up and can't figure out another way to do it
+        */
         document.location.reload();
         while (plantsG4.firstChild) {
             plantsG4.removeChild(plantsG4.lastChild);
@@ -206,7 +206,9 @@ const ul = document.createElement('ul');
                  const strMinusComma = li.lastChild.textContent.slice(0, -2);
                  li.lastChild.textContent = strMinusComma;
             } else {
-                // so the DOM elements are still there after the page reload
+                /*
+                 so the DOM elements are still there after the page reload
+                */
                 plantsG4.appendChild(ul);
                 plantsG4.insertBefore(plantIcon, ul);
     
