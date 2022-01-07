@@ -1,4 +1,4 @@
-I'm learning how to use localStorage, and this project is a way to practice it. \
+I'm learning how to use localStorage, and this project is a way to practice it. 
 
 The project consists of four parts, the first one is being the easiest (storing a single string in localStorage), and the last being the most challenging (storing a dynamic array of objects in localStorage).
 
